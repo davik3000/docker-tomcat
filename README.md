@@ -1,7 +1,11 @@
-# Apache Tomcat 8.5.6 (with Oracle JDK 1.7.79) Docker image #
+# Apache Tomcat (with Oracle JDK) Docker image #
 ================================
 
-It will create a CentOS 7 based image with a vanilla installation of Apache Tomcat 9.5.6 and Oracle JDK 1.7.79.
+It will create a CentOS 7 based image with a vanilla installation of Apache Tomcat and Oracle JDK.
+
+Supported versions:
+- Apache Tomcat > up to v8.5.*
+- Oracle JDK > v1.7.* and v1.8.*
 
 ## Pre-requirement ##
 

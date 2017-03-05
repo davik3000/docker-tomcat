@@ -1,2 +1,2 @@
-apache-tomcat-8.5.*.tar.gz
-jdk-7u79-linux-x64.tar.gz
+apache-tomcat-*.tar.gz
+jdk-*-linux-x64.tar.gz

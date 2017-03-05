@@ -14,16 +14,23 @@ RUN yum update -y && \
 # Set the variables used in this Dockerfile
 ARG SW_SRC_DIR=sw
 ARG SW_DST_DIR=/var/tmp/install
-ARG JDK_PKG=jdk-7u79-linux-x64.tar.gz
-ARG TOMCAT_PKG=apache-tomcat-8.5.6.tar.gz
+
+#ARG JDK_PKG=jdk-7u79-linux-x64.tar.gz
+ARG JDK_PKG=jdk-8u121-linux-x64.tar.gz
+#ARG TOMCAT_PKG=apache-tomcat-8.5.6.tar.gz
+ARG TOMCAT_PKG=apache-tomcat-8.5.11.tar.gz
 
 ARG MY_OPT_DIR=/opt
 
-ARG MY_JDK_FULLV=jdk1.7.0_79
+#ARG MY_JDK_FULLV=jdk1.7.0_79
+ARG MY_JDK_FULLV=jdk1.8.0_121
+
 ARG MY_JAVA_HOME=${MY_OPT_DIR}/${MY_JDK_FULLV}
 ARG MY_JRE_HOME=${MY_JAVA_HOME}/jre
 
-ARG MY_TOMCAT_FULLV=apache-tomcat-8.5.6
+#ARG MY_TOMCAT_FULLV=apache-tomcat-8.5.6
+ARG MY_TOMCAT_FULLV=apache-tomcat-8.5.11
+
 ARG MY_CATALINA_HOME=${MY_OPT_DIR}/${MY_TOMCAT_FULLV}
 ARG MY_CATALINA_BASE=${MY_CATALINA_HOME}
 

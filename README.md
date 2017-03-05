@@ -11,6 +11,7 @@ Supported versions:
 
 Prior to build the image, copy the installer files under this folder:
 
+ie.
     ./sw/apache-tomcat-8.5.6.tar.gz
     ./sw/jdk-7u79-linux-x64.tar.gz
 

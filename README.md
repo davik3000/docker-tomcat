@@ -31,7 +31,7 @@ It's possible to specify a custom image name as first argument, otherwise the de
 
 ### Exposed ports: ###
 
-`8005`
+`8005 8009 8080 8443`
 
 ## Create (run) a docker container ##
 
@@ -39,7 +39,10 @@ If not already present, it's a best practice to use a common private network bet
 
     # docker network create inetwork 
 
-After that, you can choose to run the container in detached or interactive mode.
+After that, you can choose to run the container through the script `run.sh`, or manually in detached or interactive mode.
+
+### Script mode: (detached as default) ###
+    # ./run.sh
 
 ### Detached mode: -d ###
     # ID=<hostname>; docker run -d --name ${ID} -h ${ID} --network inetwork -P <image name>

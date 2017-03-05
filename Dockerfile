@@ -45,7 +45,8 @@ COPY ${SW_SRC_DIR}/${TOMCAT_PKG} ${SW_DST_DIR}/
 # Exec yum update and install utils
 RUN yum update -y && \
     yum install -y \
-      vim && \
+      vim \
+      net-tools && \
     yum clean all
 
 WORKDIR ${MY_OPT_DIR}
@@ -66,7 +67,7 @@ ENV CATALINA_BASE ${MY_CATALINA_BASE}
 
 ENV PATH ${JAVA_HOME}/bin:${JRE_HOME}/bin:${PATH}
 
-EXPOSE 8005
+EXPOSE 8005 8009 8080 8443
 
 # Run script
 # COPY startTomcat.sh /
@@ -74,5 +75,6 @@ EXPOSE 8005
 # RUN ln -s /opt/apache-tomcat-8.5.6/bin/startup.sh /startTomcat.sh
 ADD config/startTomcat.sh /
 WORKDIR /
+RUN chmod 0755 startTomcat.sh
 CMD /startTomcat.sh
 #CMD /bin/bash

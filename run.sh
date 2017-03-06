@@ -15,4 +15,15 @@ if [ -z "${_network_present}" ] ; then
 fi;
 
 # execute container
-sudo docker run -d --name ${ID} -h ${ID} --network ${NETWORK} ${PORTS} ${IMAGE}
+_container_present=$(sudo docker ps -a | grep -e ${ID})
+_container_exited=$(echo ${_container_present} | grep -e "Exited")
+
+if [ -z "${_container_present}" ] ; then
+  echo "Run new container"
+  sudo docker run -d --name ${ID} -h ${ID} --network ${NETWORK} ${PORTS} ${IMAGE}
+elif [ -n "${_container_exited}" ] ; then
+  echo "Start existing container"
+  sudo docker start ${ID}
+else
+  echo "Container ${ID} already up and running"
+fi

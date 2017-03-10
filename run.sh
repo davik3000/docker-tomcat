@@ -5,6 +5,9 @@
 ID="docker-tomcat"
 NETWORK="inetwork"
 PORTS="-p 8005:8005 -p 8009:8009 -p 8080:8080 -p 8443:8443"
+HOST_SHARED_DIR="$(pwd)/data"
+GUEST_SHARED_DIR="/data"
+VOLUMES="-v ${HOST_SHARED_DIR}:${GUEST_SHARED_DIR}"
 IMAGE="davik3000/docker/tomcat"
 
 # detect network
@@ -14,13 +17,24 @@ if [ -z "${_network_present}" ] ; then
   sudo docker network create ${NETWORK}
 fi;
 
+whoami
+echo ${HOST_SHARED_DIR}
+ls -lah
+
+# check host shared folder
+if [ -d "${HOST_SHARED_DIR}" ] ; then
+  whoami
+  mkdir -p ${HOST_SHARED_DIR}
+  ls -lah
+fi;
+
 # execute container
 _container_present=$(sudo docker ps -a | grep -e ${ID})
 _container_exited=$(echo ${_container_present} | grep -e "Exited")
 
 if [ -z "${_container_present}" ] ; then
   echo "Run new container"
-  sudo docker run -d --name ${ID} -h ${ID} --network ${NETWORK} ${PORTS} ${IMAGE}
+  sudo docker run -d --name ${ID} -h ${ID} --network ${NETWORK} ${PORTS} ${VOLUMES} ${IMAGE}
 elif [ -n "${_container_exited}" ] ; then
   echo "Start existing container"
   sudo docker start ${ID}

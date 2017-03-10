@@ -17,15 +17,9 @@ if [ -z "${_network_present}" ] ; then
   sudo docker network create ${NETWORK}
 fi;
 
-whoami
-echo ${HOST_SHARED_DIR}
-ls -lah
-
 # check host shared folder
-if [ -d "${HOST_SHARED_DIR}" ] ; then
-  whoami
+if [ ! -d "${HOST_SHARED_DIR}" ] ; then
   mkdir -p ${HOST_SHARED_DIR}
-  ls -lah
 fi;
 
 # execute container

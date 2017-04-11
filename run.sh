@@ -24,11 +24,17 @@ fi;
 
 # execute container
 _container_present=$(sudo docker ps -a | grep -e ${ID})
+_container_created=$(echo ${_container_present} | grep -e "Created")
 _container_exited=$(echo ${_container_present} | grep -e "Exited")
 
 if [ -z "${_container_present}" ] ; then
   echo "Run new container"
   sudo docker run -d --name ${ID} -h ${ID} --network ${NETWORK} ${PORTS} ${VOLUMES} ${IMAGE}
+elif [ -n "${_container_created}" ] ; then
+  echo "The current container has been only created, so it cannot be executed."
+  echo "Please, remove it before continue"
+  echo ""
+  echo "Exiting.."
 elif [ -n "${_container_exited}" ] ; then
   echo "Start existing container"
   sudo docker start ${ID}

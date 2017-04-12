@@ -1,4 +1,5 @@
 FROM centos:7
+MAINTAINER Davik3000 <davik3000 at users.noreply.github.com>
 
 ##########
 # Shared #

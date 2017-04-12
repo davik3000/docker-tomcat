@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+#set -x
 
 IMAGE_NAME="davik3000/docker/tomcat"
 TOMCAT_VERSION=""
